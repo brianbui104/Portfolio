@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Brian Bui – Engineering Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Portfolio of Brian Duc-Huy Bui, a mechanical engineering student at the University of Toronto. Selected work in robotics, watchmaking, composites, and app development."
+  />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #050816;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --accent-strong: #0ea5e9;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.4);
+      --border-strong: rgba(148, 163, 184, 0.7);
+      --radius-lg: 18px;
+      --radius-full: 999px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.85);
+      --transition-fast: 180ms ease-out;
+      --max-width: 1040px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        sans-serif;
+      background:
+        radial-gradient(circle at top, #0b1120 0, #020617 40%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+
+    .wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 3rem 0;
+      }
+    }
+
+    /* Header / Nav */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.96),
+        rgba(15, 23, 42, 0.8),
+        transparent
+      );
+      border-bottom: 1px solid rgba(30, 64, 175, 0.45);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .nav-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: radial-gradient(circle at 20% 0%, #38bdf8, #1d4ed8);
+      color: #0b1120;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .nav-name {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .nav-tagline {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 0.84rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 0.22rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        var(--accent),
+        var(--accent-strong)
+      );
+      border-radius: 999px;
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        padding-inline: 1.1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Hero */
+
+    .hero {
+      padding-top: 3.3rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 2.75rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.55rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(
+        to right,
+        #38bdf8 0,
+        #a855f7 40%,
+        #f97316 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 36rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-subtitle strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.79rem;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-pill {
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 0.25rem 0.9rem;
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .hero-pill strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .btn-primary {
+      border-radius: var(--radius-full);
+      padding: 0.55rem 1.1rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: 1px solid rgba(56, 189, 248, 0.9);
+      background: radial-gradient(circle at 0 0, #38bdf8, #1d4ed8);
+      color: #0b1120;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.7);
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.9);
+    }
+
+    .btn-primary span {
+      font-size: 1rem;
+    }
+
+    .btn-ghost {
+      border-radius: var(--radius-full);
+      padding: 0.5rem 1rem;
+      font-size: 0.86rem;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: border-color var(--transition-fast),
+        color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.9);
+      color: #e5e7eb;
+      background: radial-gradient(circle at top left, #020617, #020617 60%);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-note strong {
+      color: #e5e7eb;
+    }
+
+    .hero-aside {
+      justify-self: center;
+    }
+
+    .hero-card {
+      border-radius: 1.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.4rem 1.3rem;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at 30% 10%, #38bdf8, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .hero-card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .hero-card-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-card-body {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .hero-card-body p + p {
+      margin-top: 0.5rem;
+    }
+
+    .hero-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.2rem;
+    }
+
+    .hero-tag {
+      font-size: 0.76rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+    }
+
+    .hero-card-footer {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .hero-card-footer strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: 2.5rem;
+      }
+
+      .hero-aside {
+        order: -1;
+        width: min(100%, 430px);
+        margin-inline: auto;
+      }
+
+      .hero {
+        padding-bottom: 2rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-inner {
+        gap: 2.1rem;
+      }
+
+      .hero-title {
+        font-size: 1.9rem;
+      }
+    }
+
+    /* Section headers */
+
+    .section-header {
+      margin-bottom: 1.8rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    /* Projects */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.6rem;
+    }
+
+    @media (max-width: 880px) {
+      .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .project-card {
+      border-radius: 1.4rem;
+      border: 1px solid var(--border-subtle);
+      padding: 1.3rem 1.35rem 1.25rem;
+      background: radial-gradient(circle at top left, #020617, #020617 60%);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.9);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .project-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .project-title-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .project-title-link:hover {
+      color: var(--accent);
+    }
+
+
+    .project-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .project-pill {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+    }
+
+    .image-placeholder {
+      width: 100%;
+      border-radius: 0.9rem;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.98);
+      padding: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 0.9rem;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .project-card p + p {
+      margin-top: 0.4rem;
+    }
+
+    .project-card p strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .project-tags {
+      margin-top: 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+    }
+
+    .project-links {
+      margin-top: 0.7rem;
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+    }
+
+    .project-link {
+      color: var(--accent);
+    }
+
+    .project-link:hover {
+      color: var(--accent-strong);
+    }
+
+    /* Experience / Education */
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.2rem;
+    }
+
+    @media (max-width: 880px) {
+      .timeline-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .timeline-section-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.95rem 1rem;
+      background: radial-gradient(circle at top left, #020617, #020617 60%);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      align-items: baseline;
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-role {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .timeline-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .timeline-org {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-body {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .timeline-body strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .timeline-list {
+      margin-top: 0.35rem;
+      padding-left: 1.05rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .timeline-list li + li {
+      margin-top: 0.15rem;
+    }
+
+    /* Skills */
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .skills-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .skills-intro {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .skills-intro p + p {
+      margin-top: 0.5rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .skills-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .skills-card {
+      border-radius: 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.9rem 1rem;
+      background: radial-gradient(circle at top left, #020617, #020617 60%);
+    }
+
+    .skills-card-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-tag {
+      font-size: 0.74rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+    }
+
+    .skills-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Contact */
+
+    .contact-card {
+      border-radius: 1.3rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 1.1rem 1.2rem;
+      background: radial-gradient(circle at top left, #020617, #020617 60%);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .contact-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 28rem;
+    }
+
+    .contact-text strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+    }
+
+    .contact-link {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 0.4rem 0.8rem;
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--muted);
+    }
+
+    .contact-link:hover {
+      color: #e5e7eb;
+      border-color: var(--accent);
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      padding: 1.3rem 0 2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2rem;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="nav-logo">BB</div>
+        <div class="nav-text">
+          <div class="nav-name">Brian Duc-Huy Bui</div>
+          <div class="nav-tagline">Mechanical Engineering Student, UofT</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <div class="wrapper">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-eyebrow">Engineering portfolio</div>
+            <h1 class="hero-title">
+              Turning <span>mechanical ideas</span> into real, buildable hardware.
+            </h1>
+            <p class="hero-subtitle">
+              I’m a second-year <strong>Mechanical Engineering student at the University of Toronto</strong>,
+              interested in <strong>robotics, precision mechanisms, composites, and software tools</strong> that make
+              engineering work better. I enjoy projects where I can go from concept, to CAD, to something you can
+              actually hold.
+            </p>
+
+            <div class="hero-meta">
+              <div class="hero-pill">
+                <strong>Current focus:</strong> robotic camera arm design, tourbillon mechanisms, and composite
+                fabrication.
+              </div>
+              <div class="hero-pill">
+                <strong>Location:</strong> Toronto, ON
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a class="btn-primary" href="#projects">
+                View engineering work
+                <span>↓</span>
+              </a>
+              <a class="btn-ghost" href="#contact">
+                Get in touch
+              </a>
+            </div>
+
+            <p class="hero-note">
+              I like projects that mix <strong>careful analysis</strong> with
+              <strong>hands-on building</strong>—especially where a small mechanical detail makes a big difference.
+            </p>
+          </div>
+
+          <aside class="hero-aside">
+            <div class="hero-card">
+              <div class="hero-card-header">
+                <div class="avatar">BB</div>
+                <div>
+                  <div class="hero-card-title">Mechanical engineer-in-training</div>
+                  <div class="hero-card-subtitle">
+                    Building a foundation in design, manufacturing, and analysis.
+                  </div>
+                </div>
+              </div>
+
+              <div class="hero-card-body">
+                <p>
+                  I’m currently exploring <strong>robotic joints and power transmission</strong>,
+                  <strong>watch mechanisms</strong>, and <strong>composite layups</strong>, while also building small
+                  tools in software when I need them.
+                </p>
+                <p>
+                  I’m especially motivated by projects where there’s a clear user or client: camera operators, drivers,
+                  or people trying to understand their own sleep or screen time.
+                </p>
+
+                <div class="hero-card-tags">
+                  <span class="hero-tag">SolidWorks &amp; Inventor</span>
+                  <span class="hero-tag">Mechanism design</span>
+                  <span class="hero-tag">Composites</span>
+                  <span class="hero-tag">Android / Kotlin</span>
+                  <span class="hero-tag">Data &amp; analysis</span>
+                </div>
+              </div>
+
+              <div class="hero-card-footer">
+                <span>Looking for opportunities to contribute to
+                  <strong>hands-on, technically deep projects</strong>.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="wrapper">
+        <div class="section-header">
+          <div class="section-eyebrow">Projects</div>
+          <h2 class="section-title">Selected engineering work</h2>
+          <p class="section-subtitle">
+            A mix of academic, competition, and personal projects that show how I approach design, analysis, and iteration.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project: Robotic Arm -->
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">
+                <a class="project-title-link" href="project-robotic-arm.html">
+                  Robotic Arm – MIE243 Final Project
+                </a>
+              </h3>
+                <div class="project-meta">
+                  Course project • Robotic joints &amp; power transmission
+                </div>
+              </div>
+              <span class="project-pill">SolidWorks</span>
+            </div>
+
+            <div class="image-placeholder">
+              <img src="images\Render.jpg">
+            </div>
+
+            <p>
+              Designed a <strong>2-DOF differential joint</strong> and a <strong>1-DOF worm-gear rotation joint</strong>
+              for a robotic arm. The differential joint is rigidly connected to a planetary gearbox to provide
+              3-DOF motion at the base, while keeping the assembly compact and efficient for torque
+              distribution.
+            </p>
+            <p>
+              The worm-gear rotation joint drives belts and is intentionally hard to backdrive, eliminating the
+              need for extra brakes and improving stability when the arm is holding a static pose under load.
+              Joint concepts were selected using a multivoting process that balanced kinematics, integration,
+              and feasibility.
+            </p>
+
+            <div class="project-tags">
+              <span class="project-tag">Differential gear design</span>
+              <span class="project-tag">Worm gear + belts</span>
+              <span class="project-tag">Load paths &amp; stiffness</span>
+              <span class="project-tag">Multivoting selection</span>
+            </div>
+          </article>
+
+          <!-- Project: Carbon bumper -->
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">
+                <a class="project-title-link" href="project-carbon-bumper.html">
+                  Carbon-Fibre Front Bumper
+                </a>
+              </h3>
+                <div class="project-meta">
+                  Personal project • Composite automotive component
+                </div>
+              </div>
+              <span class="project-pill">Independent</span>
+            </div>
+
+            <div class="image-placeholder">
+              <img src = "images\20251122_211406.png">
+            </div>
+
+            <p>
+              Fabricated a <strong>carbon-fibre front bumper</strong> for a Toyota MR2 Spyder, going through the
+              full composite workflow: mold preparation, tooling gel coat, fiberglass backing, carbon-fibre
+              layup, vacuum bagging, curing, trimming, and finishing.
+            </p>
+            <p>
+              Iterated on vacuum bagging technique to avoid leaks, wrinkles, and voids, learning how fibre
+              orientation, resin distribution, and pressure control affect surface quality and laminate integrity.
+            </p>
+
+            <div class="project-tags">
+              <span class="project-tag">Mold design &amp; prep</span>
+              <span class="project-tag">Carbon layup</span>
+              <span class="project-tag">Vacuum bagging</span>
+              <span class="project-tag">Automotive fitment</span>
+            </div>
+          </article>
+
+          <!-- Project: Tourbillon -->
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">
+                <a class="project-title-link" href="project-tourbillon.html">
+                  Tourbillon Watch Mechanism
+                </a>
+              </h3>
+                <div class="project-meta">
+                  Independent project • Precision mechanism design
+                </div>
+              </div>
+              <span class="project-pill">Inventor</span>
+            </div>
+
+            <div class="image-placeholder">
+              <img src = "images\Screenshot 2025-11-23 132240.png">
+            </div>
+
+            <p>
+              Modelled a <strong>tourbillon watch movement</strong> in CAD, including the Swiss lever escapement,
+              balance assembly, and high-ratio gear train. Used gear standards and escapement geometry references
+              to keep the design physically plausible rather than purely aesthetic.
+            </p>
+            <p>
+              Explored how small changes in angles, clearances, and tooth counts affect locking, impulse, and
+              overall running behaviour, building intuition for precision tolerances and manufacturability at watch
+              scales.
+            </p>
+
+            <div class="project-tags">
+              <span class="project-tag">Swiss lever escapement</span>
+              <span class="project-tag">High-ratio gear trains</span>
+              <span class="project-tag">Balance &amp; inertia</span>
+              <span class="project-tag">Precision tolerances</span>
+            </div>
+          </article>
+
+          <!-- Project: Sleep pajamas -->
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">
+                <a class="project-title-link" href="project-sleep-pajamas.html">
+                  Sleep Well, Age Well – Sleep Tracking Pajamas
+                </a>
+              </h3>
+                <div class="project-meta">
+                  APS112 – Engineering Strategies &amp; Practice II • Team of five
+                </div>
+              </div>
+              <span class="project-pill">Concept design</span>
+            </div>
+
+            <div class="image-placeholder">
+              <img src="images\Screenshot 2025-11-29 164400.png">
+            </div>
+
+            <p>
+              Developed a concept for <strong>sleep tracking pajamas</strong> for retired adults in the GTA as part of
+              a full Conceptual Design Specification (CDS). The design embeds non-obtrusive sensors into a familiar
+              garment, paired with a removable electronics module to track sleep without extra devices.
+            </p>
+            <p>
+              Worked through the full ESP framework: translating client statements into engineering requirements,
+              mapping stakeholders and the service environment, and using FOC (Functions–Objectives–Constraints)
+              diagrams and decision matrices to converge on the final concept.
+            </p>
+
+            <div class="project-tags">
+              <span class="project-tag">Requirements development</span>
+              <span class="project-tag">Wearable design</span>
+              <span class="project-tag">Stakeholder analysis</span>
+              <span class="project-tag">Conceptual design</span>
+            </div>
+          </article>
+
+          <!-- Project: Scroll Score app -->
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">
+                <a class="project-title-link" href="project-scroll-score.html">
+                  Scroll Score – Android Scroll Tracking App
+                </a>
+              </h3>
+                <div class="project-meta">
+                  Independent project • Android &amp; accessibility
+                </div>
+              </div>
+              <span class="project-pill">Android</span>
+            </div>
+
+            <div class="image-placeholder">
+              <img src = "images\Screenshot_20251123_132033_Scroll Score.jpg">
+            </div>
+
+            <p>
+              Built <strong>Scroll Score</strong>, an Android app that uses an Accessibility Service to detect scroll
+              events in short-form content apps (like TikTok and YouTube Shorts) and logs per-app scroll counts and
+              usage over time.
+            </p>
+            <p>
+              Implemented debouncing and event filtering so each scroll gesture translates into a meaningful unit of
+              “attention spent,” with simple UI for daily totals, app breakdowns, and exportable history for
+              offline analysis.
+            </p>
+
+            <div class="project-tags">
+              <span class="project-tag">Kotlin</span>
+              <span class="project-tag">AccessibilityService</span>
+              <span class="project-tag">Usage analytics</span>
+              <span class="project-tag">CSV export</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience">
+      <div class="wrapper">
+        <div class="section-header">
+          <div class="section-eyebrow">Background</div>
+          <h2 class="section-title">Experience &amp; education</h2>
+          <p class="section-subtitle">
+            A snapshot of formal education and hands-on work where I’ve applied design, analysis, and problem-solving.
+          </p>
+        </div>
+
+        <div class="timeline-grid">
+          <!-- Experience column -->
+          <div>
+            <div class="timeline-section-title">Experience</div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div class="timeline-role">Engineering projects &amp; personal builds</div>
+                  <div class="timeline-date">Ongoing</div>
+                </div>
+                <div class="timeline-org">Toronto, ON</div>
+                <div class="timeline-body">
+                  <p>
+                    Self-directed engineering work in <strong>robotics, watchmaking, composites, and app development</strong>,
+                    focused on turning ideas into functioning mechanisms and tools.
+                  </p>
+                  <ul class="timeline-list">
+                    <li>Designed and modelled multi-DOF robotic joints with gears, belts, and bearings.</li>
+                    <li>Fabricated composite parts from scratch, including a full carbon-fibre front bumper.</li>
+                    <li>Developed Android tools like Scroll Score to observe my own behaviour with real data.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div class="timeline-role">Teaching &amp; Mentoring (informal)</div>
+                  <div class="timeline-date">Ongoing</div>
+                </div>
+                <div class="timeline-org">Tutoring &amp; Piano Instruction</div>
+                <div class="timeline-body">
+                  <p>
+                    Tutor students in coursework and provide one-on-one piano lessons, focusing on fundamentals, technique development, and confidence through structured guidance and practice.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education column -->
+          <div>
+            <div class="timeline-section-title">Education</div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div class="timeline-role">BASc, Mechanical Engineering</div>
+                  <div class="timeline-date">2023 – Present</div>
+                </div>
+                <div class="timeline-org">University of Toronto • Toronto, ON</div>
+                <div class="timeline-body">
+                  <p>
+                    Building fundamentals in <strong>mechanics, materials, design, and computing</strong> while applying them
+                    to labs and project-based courses.
+                  </p>
+                  <ul class="timeline-list">
+                    <li>Coursework includes design and communication, materials science, and solid mechanics.</li>
+                    <li>Projects range from conceptual design (APS112) to detailed mechanical design (MIE243).</li>
+                    <li>Actively supplementing classes with independent CAD and fabrication practice.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div class="timeline-role">Independent learning</div>
+                  <div class="timeline-date">Ongoing</div>
+                </div>
+                <div class="timeline-org">Self-directed</div>
+                <div class="timeline-body">
+                  <p>
+                    Regularly explore topics like <strong>gear design standards</strong>, <strong>watchmaking
+                    references</strong>, <strong>composite theory</strong>, and <strong>software tooling</strong> through
+                    books, manuals, and online resources.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="wrapper">
+        <div class="section-header">
+          <div class="section-eyebrow">Skills</div>
+          <h2 class="section-title">What I work with</h2>
+          <p class="section-subtitle">
+            A mix of mechanical design, hands-on fabrication, and software tools that I use to move projects from idea
+            to reality.
+          </p>
+        </div>
+
+        <div class="skills-layout">
+          <div class="skills-intro">
+            <p>
+              I’m most comfortable when I can combine <strong>solid modelling</strong> and
+              <strong>analysis</strong> with <strong>real-world fabrication</strong>. I like understanding how choices in
+              geometry, material, or tolerances show up as actual behaviour.
+            </p>
+            <p>
+              On the software side, I build small tools when they’re missing—whether that’s an app to track scrolling
+              or scripts to process test data.
+            </p>
+          </div>
+
+          <div class="skills-grid">
+            <div class="skills-card">
+              <div class="skills-card-title">Mechanical design &amp; CAD</div>
+              <div class="skill-tags">
+                <span class="skill-tag">SolidWorks</span>
+                <span class="skill-tag">Inventor</span>
+                <span class="skill-tag">Multi-DOF joints</span>
+                <span class="skill-tag">Assemblies &amp; drawings</span>
+              </div>
+              <p>
+                Modelling mechanisms, joints, and assemblies with a focus on <strong>how they’ll actually be built</strong>:
+                clearances, fasteners, and how forces move through the structure.
+              </p>
+            </div>
+
+            <div class="skills-card">
+              <div class="skills-card-title">Mechanisms &amp; transmission</div>
+              <div class="skill-tags">
+                <span class="skill-tag">Gear trains</span>
+                <span class="skill-tag">Belts &amp; pulleys</span>
+                <span class="skill-tag">Bearings</span>
+                <span class="skill-tag">Worm drives</span>
+              </div>
+              <p>
+                Designing and analysing <strong>gear, belt, and worm-drive systems</strong> for torque, speed, and stiffness,
+                including packaging inside robotic joints and watch movements.
+              </p>
+            </div>
+
+            <div class="skills-card">
+              <div class="skills-card-title">Composites &amp; fabrication</div>
+              <div class="skill-tags">
+                <span class="skill-tag">Carbon-fibre layup</span>
+                <span class="skill-tag">Vacuum bagging</span>
+                <span class="skill-tag">Mold prep</span>
+                <span class="skill-tag">Finishing &amp; fitment</span>
+              </div>
+              <p>
+                Hands-on experience taking a composite part from <strong>plug to mold to finished part</strong>, including
+                learning from inevitable defects and iterating the process.
+              </p>
+            </div>
+
+            <div class="skills-card">
+              <div class="skills-card-title">Software &amp; tooling</div>
+              <div class="skill-tags">
+                <span class="skill-tag">Kotlin / Android</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Excel &amp; data analysis</span>
+                <span class="skill-tag">LaTeX</span>
+              </div>
+              <p>
+                Building small tools like <strong>Scroll Score</strong>, and using programming and spreadsheets to process
+                data, run calculations, and document results clearly.
+              </p>
+            </div>
+
+            <div class="skills-card">
+              <div class="skills-card-title">Communication</div>
+              <div class="skill-tags">
+                <span class="skill-tag">Technical writing</span>
+                <span class="skill-tag">Concept pitches</span>
+                <span class="skill-tag">Design reports</span>
+              </div>
+              <p>
+                Comfortable explaining designs with <strong>clear visuals, diagrams, and writing</strong>, whether the
+                audience is a client, a TA, or other engineers.
+              </p>
+            </div>
+
+            <div class="skills-card">
+              <div class="skills-card-title">Other interests</div>
+              <div class="skill-tags">
+                <span class="skill-tag">Watchmaking</span>
+                <span class="skill-tag">Automotive</span>
+                <span class="skill-tag">Cinematography</span>
+                <span class="skill-tag">Piano performance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="wrapper">
+        <div class="section-header">
+          <div class="section-eyebrow">Contact</div>
+          <h2 class="section-title">Let’s talk</h2>
+          <p class="section-subtitle">
+            I’m open to internships, research positions, and project collaborations—especially where there’s a chance
+            to design, analyse, and build something real.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-text">
+            <p>
+              The best way to reach me is by <strong>email</strong>. I’m happy to share more details about any of the
+              projects here, send a resume, or talk through potential opportunities.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:brianbui104@gmail.com">
+              Email: brianbui104@gmail.com
+            </a>
+            <!-- Add your LinkedIn / GitHub links here when ready -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Brian Duc-Huy Bui.</div>
+      <div class="footer-links">
+        <span>Built as a lightweight, static portfolio.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
