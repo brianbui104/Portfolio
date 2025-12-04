@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sleep Well, Age Well – Sleep Tracking Pajamas | Brian Bui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Sleep tracking pajama concept for retired adults in the GTA, developed in Engineering Strategies & Practice II by Brian Bui and team."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* same style block as previous pages */
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #101827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.2);
+      --accent-strong: #0ea5e9;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+      --radius-lg: 18px;
+      --radius-full: 999px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+      --transition-fast: 180ms ease-out;
+      --max-width: 900px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 40%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.4rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 0.6rem; }
+    .nav-logo {
+      width: 32px; height: 32px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; font-weight: 700;
+      background: radial-gradient(circle at 20% 0%, #38bdf8, #1d4ed8);
+      color: #0b1120;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+    .nav-name { font-weight: 600; font-size: 0.98rem; }
+    .nav-tagline { font-size: 0.7rem; color: var(--muted); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      font-size: 0.84rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(to right, var(--accent), var(--accent-strong));
+      border-radius: 999px;
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.4rem;
+    }
+
+    main { padding: 3.5rem 0 3rem; }
+
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .breadcrumb a { color: var(--accent); }
+    .breadcrumb a:hover { color: var(--accent-strong); }
+
+    .project-hero-title {
+      font-size: clamp(2rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-hero-subtitle {
+      font-size: 0.96rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .meta-pill {
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.2rem 0.7rem;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 1.1rem;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      text-align: center;
+      padding: 0.6rem;
+    }
+
+    section { margin-bottom: 2.5rem; }
+
+    .section-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; }
+
+    .section-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .section-text p + p { margin-top: 0.6rem; }
+
+    ul {
+      margin-left: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    ul li + li { margin-top: 0.35rem; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 720px) {
+      .info-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .side-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 0.9rem 1rem;
+      font-size: 0.86rem;
+    }
+
+    .side-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.76rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.8rem;
+    }
+
+    @media (max-width: 720px) {
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .gallery-placeholder {
+      aspect-ratio: 4 / 3;
+      border-radius: 0.8rem;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 0.4rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.82rem;
+      margin-top: 0.5rem;
+      color: var(--accent);
+    }
+
+    .back-link:hover { color: var(--accent-strong); }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 1.3rem 0 2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="nav-logo">BB</div>
+        <div>
+          <div class="nav-name">Brian Duc-Huy Bui</div>
+          <div class="nav-tagline">Mechanical Engineering Student</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrapper">
+      <div class="breadcrumb">
+        <a href="index.html#projects">← Back to Selected engineering work</a>
+      </div>
+
+      <h1 class="project-hero-title">Sleep Well, Age Well – Sleep Tracking Pajamas</h1>
+      <p class="project-hero-subtitle">
+        Wearable sleep tracking system for retired adults in the GTA, designed to be
+        comfortable, low-friction, and easy to adopt.
+      </p>
+
+      <div class="project-meta-row">
+        <span class="meta-pill">Engineering Strategies &amp; Practice II</span>
+        <span class="meta-pill">Team of five</span>
+        <span class="meta-pill">Wearables • Requirements development</span>
+      </div>
+
+      <div class="hero-image-placeholder">
+        System diagram of the sleep tracking pajamas: garment, embedded sensors,
+        electronics pod, and data flow to the app.  
+        <br />→ Replace with: <code>&lt;img src="images/sleep-pajamas-hero.png" alt="Sleep tracking pajama system" /&gt;</code>
+      </div>
+
+      <section>
+        <h2 class="section-title">Problem &amp; context</h2>
+        <div class="info-grid">
+          <div class="section-text">
+            <p>
+              Our client wanted a way for retired adults in the GTA to monitor and understand
+              their sleep without adding more screens or complicated devices. Existing solutions
+              like watches, phones, and rings are often <strong>expensive, uncomfortable, or
+              too tech-heavy</strong> for long-term adoption.
+            </p>
+            <p>
+              Our team’s final concept was a set of <strong>Sleep Tracking Pajamas</strong>:
+              a familiar, low-friction garment with embedded sensors that collect sleep data
+              passively while the user just wears what they already wear to bed.
+            </p>
+          </div>
+
+          <aside class="side-card">
+            <h3>My role – Technical Developer</h3>
+            <ul>
+              <li>Helped translate client statements into measurable engineering requirements.</li>
+              <li>Researched sensors and feasible placements on a garment.</li>
+              <li>Mapped system architecture from body to data storage/visualization.</li>
+              <li>Contributed to the Conceptual Design Specification (CDS) document.</li>
+            </ul>
+
+            <div class="chips">
+              <span class="chip">Requirements analysis</span>
+              <span class="chip">Wearable design</span>
+              <span class="chip">Stakeholder mapping</span>
+              <span class="chip">Documentation</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Concept &amp; design details</h2>
+        <div class="section-text">
+          <p>
+            We embedded non-obtrusive sensors in a two-piece pajama set to track
+            movement, basic vitals, and sleep state proxies. The design emphasized:
+          </p>
+        </div>
+
+        <ul>
+          <li><strong>Comfort:</strong> soft, breathable fabrics with flat seams around sensors.</li>
+          <li><strong>Washability:</strong> removable electronics module; garment remains machine-washable.</li>
+          <li><strong>Safety &amp; privacy:</strong> clear data handling, no live audio/video, encryption when stored or transmitted.</li>
+          <li><strong>Ease of use:</strong> automatic logging; user only needs to plug in the module to charge.</li>
+        </ul>
+
+        <div class="section-text">
+          <p>
+            The project followed the ESP framework: stakeholders, service environment,
+            Functions–Objectives–Constraints (FOCs), and traceable decision-making from
+            client needs to final concept.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Images &amp; diagrams</h2>
+        <p class="section-text">
+          Replace these placeholders with your figures from the CDS and presentation.
+        </p>
+
+        <div class="gallery-grid">
+          <div class="gallery-placeholder">
+            Front/back layout of pajamas with sensor locations
+          </div>
+          <div class="gallery-placeholder">
+            System block diagram (sensors → module → app)
+          </div>
+          <div class="gallery-placeholder">
+            User persona / scenario storyboard
+          </div>
+          <div class="gallery-placeholder">
+            FOC diagram snippet for key functions
+          </div>
+          <div class="gallery-placeholder">
+            Risk/mitigation matrix overview
+          </div>
+          <div class="gallery-placeholder">
+            High-level mock-up of data visualization screen
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Outcomes &amp; learning</h2>
+        <div class="section-text">
+          <p>
+            The Sleep Tracking Pajamas concept met the core needs identified in the
+            client interviews: comfort, low friction, and meaningful feedback on sleep
+            quality. Our final documents clearly traced how each design choice tied back
+            to stakeholder needs and constraints.
+          </p>
+          <p>
+            Personally, this project taught me how valuable structured design thinking is:
+            instead of jumping straight to a gadget, we spent time clarifying the
+            <em>problem</em>, environment, and constraints so that our solution actually
+            fit into users’ lives.
+          </p>
+        </div>
+      </section>
+
+      <a class="back-link" href="index.html#projects">← Back to all projects</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Brian Duc-Huy Bui.</div>
+      <div>Sleep Well, Age Well – Sleep Tracking Pajamas</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
